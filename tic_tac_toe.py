@@ -44,6 +44,7 @@ def update():
         if check_is_game_over():
             break
 
+        # TODO: refactor into a helper function
         print('First player turn')
         row, cell = get_player_input()
 
@@ -66,10 +67,6 @@ def update():
 
         model[row][cell] = 'O'
         view()
-
-        # print(f'row:{row} cell:{cell}')
-
-        print(f'is game over: {check_is_game_over()}')
 
 
 update()
