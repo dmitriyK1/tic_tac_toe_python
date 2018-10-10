@@ -7,11 +7,14 @@ model = [
 
 def view():
     for row in model:
-        for column in row:
+        for index, column in enumerate(row):
             val = column if column else ' '
 
-            print(f'{val}|', end='')
-        print()
+            print(f'{val}', end='')
+
+            if index != 2:
+                print('|', end='')
+        print('\n-----')
 
 
 def get_player_input():
@@ -25,10 +28,23 @@ def get_player_input():
     return row, cell
 
 
+def check_is_game_over():
+    for row in model:
+        if None in row:
+            return False
+
+    print('GAME OVER.')
+    return True
+
+
 def update():
     view()
 
     while True:
+        if check_is_game_over():
+            break
+
+        print('First player turn')
         row, cell = get_player_input()
 
         while model[row][cell]:
@@ -38,6 +54,10 @@ def update():
         model[row][cell] = 'X'
         view()
 
+        if check_is_game_over():
+            break
+
+        print('Second player turn')
         row, cell = get_player_input()
 
         while model[row][cell]:
@@ -47,7 +67,9 @@ def update():
         model[row][cell] = 'O'
         view()
 
-        print(f'row:{row} cell:{cell}')
+        # print(f'row:{row} cell:{cell}')
+
+        print(f'is game over: {check_is_game_over()}')
 
 
 update()
