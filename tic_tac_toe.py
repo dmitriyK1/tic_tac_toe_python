@@ -1,3 +1,4 @@
+# TODO: use https://docs.scipy.org/doc/numpy-1.13.0/reference/generated/numpy.matrix.html
 model = [
     [None, None, None],
     [None, None, None],
