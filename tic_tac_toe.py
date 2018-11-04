@@ -35,7 +35,6 @@ def get_player_input():
 def find_filled_columns():
     for index, row in enumerate(model):
         column_values = [row[index] for row in model]
-        # print(column_values)
 
         if all(value == 'X' for value in column_values):
             print('\nplayer one won')
@@ -62,14 +61,15 @@ def find_filled_rows():
 
 
 def find_filled_axis():
-    for index in range(len(model)):
-        axis_values = [r[i] for (i, r) in enumerate(model)]
-        if all(axis_value == 'X' for axis_value in axis_values):
-            print('\n\nPlayer one won')
-            return True
-        elif all(axis_value == 'O' for axis_value in axis_values):
-            print('\n\nPlayer two won')
-            return True
+    axis_values = [row[index] for (index, row) in enumerate(model)]
+    reverse_axis_values = [row[len(model) - index - 1] for (index, row) in enumerate(model)]
+
+    if all(axis_value == 'X' for axis_value in axis_values) or all(reverse_axis_value == 'X' for reverse_axis_value in reverse_axis_values):
+        print('\n\nPlayer one won')
+        return True
+    elif all(axis_value == 'O' for axis_value in axis_values or all(reverse_axis_value == 'O' for reverse_axis_value in reverse_axis_values)):
+        print('\n\nPlayer two won')
+        return True
 
     return False
 
