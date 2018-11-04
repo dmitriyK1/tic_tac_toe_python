@@ -62,7 +62,16 @@ def find_filled_rows():
 
 
 def find_filled_axis():
-    pass
+    for index in range(len(model)):
+        axis_values = [r[i] for (i, r) in enumerate(model)]
+        if all(axis_value == 'X' for axis_value in axis_values):
+            print('\n\nPlayer one won')
+            return True
+        elif all(axis_value == 'O' for axis_value in axis_values):
+            print('\n\nPlayer two won')
+            return True
+
+    return False
 
 
 def check_is_game_over():
