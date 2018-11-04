@@ -7,6 +7,8 @@ model = [
 
 
 def view():
+    print('\n')
+
     for row_index, row in enumerate(model):
         for index, column in enumerate(row):
             val = column if column else ' '
@@ -79,7 +81,7 @@ def update():
             break
 
         # TODO: refactor into a helper function
-        print('\nFirst player turn')
+        print('\n\nFirst player turn')
         row, cell = get_player_input()
 
         while model[row][cell]:
@@ -92,7 +94,7 @@ def update():
         if check_is_game_over():
             break
 
-        print('\nSecond player turn')
+        print('\n\nSecond player turn')
         row, cell = get_player_input()
 
         while model[row][cell]:
