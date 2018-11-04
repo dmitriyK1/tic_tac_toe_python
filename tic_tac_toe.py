@@ -21,12 +21,25 @@ def view():
             print('\n-----')
 
 
-def get_player_input():
-    row = int(input('select row(1-3):')) - 1
-    cell = int(input('select cell(1-3):')) - 1
+def validate_out_of_range_value(value):
+    if value > 2:
+        return True
 
-    if row > 2 or cell > 2:
-        print('value out of range')
+
+def get_player_input():
+    try:
+        row = int(input('select row(1-3):')) - 1
+
+        if validate_out_of_range_value(row):
+            print('value out of range')
+            return get_player_input()
+
+        cell = int(input('select cell(1-3):')) - 1
+
+        if validate_out_of_range_value(cell):
+            print('value out of range')
+            return get_player_input()
+    except ValueError:
         return get_player_input()
 
     return row, cell
