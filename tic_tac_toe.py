@@ -33,14 +33,15 @@ def get_player_input():
 
 
 def find_filled_columns():
-    for index, row in enumerate(model):
+    for index in range(len(model)):
         column_values = [row[index] for row in model]
 
         if all(value == 'X' for value in column_values):
-            print('\nplayer one won')
+            print('\n\nplayer one won')
             return True
-        elif all(value == 'O' for value in column_values):
-            print('\nplayer two won')
+
+        if all(value == 'O' for value in column_values):
+            print('\n\nplayer two won')
             return True
 
 
@@ -53,25 +54,27 @@ def find_filled_rows():
         if all(cell_value == 'X' for cell_value in row):
             print('\n\nPlayer one won')
             return True
-        elif all(cell_value == 'O' for cell_value in row):
+
+        if all(cell_value == 'O' for cell_value in row):
             print('\n\nPlayer two won')
             return True
 
-    return False
+
+def is_axis_filled(axis_values, mark):
+    return all(axis_value == mark for axis_value in axis_values)
 
 
 def find_filled_axis():
     axis_values = [row[index] for (index, row) in enumerate(model)]
     reverse_axis_values = [row[len(model) - index - 1] for (index, row) in enumerate(model)]
 
-    if all(axis_value == 'X' for axis_value in axis_values) or all(reverse_axis_value == 'X' for reverse_axis_value in reverse_axis_values):
+    if is_axis_filled(axis_values, mark='X') or is_axis_filled(reverse_axis_values, mark='X'):
         print('\n\nPlayer one won')
         return True
-    elif all(axis_value == 'O' for axis_value in axis_values or all(reverse_axis_value == 'O' for reverse_axis_value in reverse_axis_values)):
+
+    if is_axis_filled(axis_values, mark='O') or is_axis_filled(reverse_axis_values, mark='O'):
         print('\n\nPlayer two won')
         return True
-
-    return False
 
 
 def check_is_game_over():
