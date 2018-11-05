@@ -109,6 +109,41 @@ def check_is_game_over():
     return False
 
 
+def do_next_turn(player):
+    if player == 'X':
+        first_player_turn()
+    else:
+        second_player_turn()
+
+    view()
+
+
+def is_cell_occupied(row, cell):
+    return model[row][cell]
+
+
+def first_player_turn():
+    print('\n\nFirst player turn')
+    row, cell = get_player_input()
+
+    while is_cell_occupied(row, cell):
+        print('cell already occupied')
+        row, cell = get_player_input()
+
+    model[row][cell] = 'X'
+
+
+def second_player_turn():
+    print('\n\nSecond player turn')
+    row, cell = get_player_input()
+
+    while is_cell_occupied(row, cell):
+        print('cell already occupied')
+        row, cell = get_player_input()
+
+    model[row][cell] = 'O'
+
+
 def update():
     view()
 
@@ -116,29 +151,12 @@ def update():
         if check_is_game_over():
             break
 
-        # TODO: refactor into a helper function
-        print('\n\nFirst player turn')
-        row, cell = get_player_input()
-
-        while model[row][cell]:
-            print('cell already occupied')
-            row, cell = get_player_input()
-
-        model[row][cell] = 'X'
-        view()
+        do_next_turn(player='X')
 
         if check_is_game_over():
             break
 
-        print('\n\nSecond player turn')
-        row, cell = get_player_input()
-
-        while model[row][cell]:
-            print('cell already occupied')
-            row, cell = get_player_input()
-
-        model[row][cell] = 'O'
-        view()
+        do_next_turn(player='O')
 
 
 update()
