@@ -81,7 +81,7 @@ def find_filled_columns():
 
 def find_filled_rows():
     for row in model:
-        # no need to check all row values if there's still empty slot
+        # no need to check all row values if there is empty slot
         if None in row:
             continue
 
