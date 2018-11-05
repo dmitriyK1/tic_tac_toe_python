@@ -138,15 +138,11 @@ def update():
     view()
 
     while True:
-        if is_game_over():
-            break
+        for player in ('X', 'O'):
+            if is_game_over():
+                return
 
-        do_next_turn(player='X')
-
-        if is_game_over():
-            break
-
-        do_next_turn(player='O')
+            do_next_turn(player)
 
 
 update()
