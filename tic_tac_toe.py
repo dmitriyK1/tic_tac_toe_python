@@ -28,6 +28,7 @@ def validate_out_of_range_value(value):
 
 def get_player_input():
     try:
+        # TODO: remove duplication
         row = int(input('select row(1-3):')) - 1
 
         if validate_out_of_range_value(row):
