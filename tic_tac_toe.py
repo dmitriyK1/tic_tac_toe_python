@@ -45,13 +45,18 @@ def get_player_input():
     return row, cell
 
 
+def has_player_won(values, mark):
+    if all(value == mark for value in values):
+        return True
+
+
 def has_player_one_won(values):
-    if all(value == 'X' for value in values):
+    if has_player_won(values, mark='X'):
         return True
 
 
 def has_player_two_won(values):
-    if all(value == 'O' for value in values):
+    if has_player_won(values, mark='O'):
         return True
 
 
