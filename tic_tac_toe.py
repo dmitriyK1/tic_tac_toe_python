@@ -101,7 +101,7 @@ def find_filled_axis():
         return True
 
 
-def check_is_game_over():
+def is_game_over():
     if find_filled_rows() or find_filled_columns() or find_filled_axis():
         print('\nGAME OVER.')
         return True
@@ -111,9 +111,11 @@ def check_is_game_over():
 
 def do_next_turn(player):
     if player == 'X':
-        first_player_turn()
+        print('\n\nFirst player turn')
+        do_player_turn(player)
     else:
-        second_player_turn()
+        print('\n\nSecond player turn')
+        do_player_turn(player)
 
     view()
 
@@ -122,38 +124,26 @@ def is_cell_occupied(row, cell):
     return model[row][cell]
 
 
-def first_player_turn():
-    print('\n\nFirst player turn')
+def do_player_turn(player):
     row, cell = get_player_input()
 
     while is_cell_occupied(row, cell):
         print('cell already occupied')
         row, cell = get_player_input()
 
-    model[row][cell] = 'X'
-
-
-def second_player_turn():
-    print('\n\nSecond player turn')
-    row, cell = get_player_input()
-
-    while is_cell_occupied(row, cell):
-        print('cell already occupied')
-        row, cell = get_player_input()
-
-    model[row][cell] = 'O'
+    model[row][cell] = player
 
 
 def update():
     view()
 
     while True:
-        if check_is_game_over():
+        if is_game_over():
             break
 
         do_next_turn(player='X')
 
-        if check_is_game_over():
+        if is_game_over():
             break
 
         do_next_turn(player='O')
