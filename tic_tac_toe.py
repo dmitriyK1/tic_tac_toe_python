@@ -109,6 +109,10 @@ def is_game_over():
     return False
 
 
+def is_cell_occupied(row, cell):
+    return model[row][cell]
+
+
 def do_next_turn(player):
     if player == 'X':
         print('\n\nFirst player turn')
@@ -118,10 +122,6 @@ def do_next_turn(player):
         do_player_turn(player)
 
     view()
-
-
-def is_cell_occupied(row, cell):
-    return model[row][cell]
 
 
 def do_player_turn(player):
