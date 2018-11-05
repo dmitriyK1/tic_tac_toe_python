@@ -46,7 +46,8 @@ def get_player_input():
 
 
 def has_player_won(values, mark):
-    if all(value == mark for value in values):
+    # if all(value == mark for value in values):
+    if set(values) == {mark}:
         return True
 
 
