@@ -82,7 +82,7 @@ def find_filled_rows():
     for row in model:
         # no need to check all row values if there's still empty slot
         if None in row:
-            return False
+            continue
 
         if has_some_player_won(row):
             return True
