@@ -1,26 +1,3 @@
-# TODO: use https://docs.scipy.org/doc/numpy-1.13.0/reference/generated/numpy.matrix.html
-model = [
-    [None, None, None],
-    [None, None, None],
-    [None, None, None],
-]
-
-
-def view():
-    print('\n')
-
-    for row_index, row in enumerate(model):
-        for index, column in enumerate(row):
-            val = column if column else ' '
-
-            print(f'{val}', end='')
-
-            if index != 2:
-                print('|', end='')
-        if row_index != 2:
-            print('\n-----')
-
-
 def validate_out_of_range_value(value):
     if value > 2:
         return True
@@ -90,6 +67,7 @@ def find_filled_rows():
             return True
 
 
+# TODO: use https://docs.scipy.org/doc/numpy-1.13.0/reference/generated/numpy.matrix.html
 def is_axis_filled(axis_values, mark):
     return all(axis_value == mark for axis_value in axis_values)
 
@@ -133,17 +111,6 @@ def do_player_turn(player):
         row, cell = get_player_input()
 
     model[row][cell] = player
-
-
-def update():
-    view()
-
-    while True:
-        for player in ('X', 'O'):
-            if is_game_over():
-                return
-
-            do_next_turn(player)
 
 
 update()
