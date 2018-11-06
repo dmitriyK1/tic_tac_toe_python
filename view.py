@@ -1,4 +1,4 @@
-def view():
+def render():
     print('\n')
 
     for row_index, row in enumerate(model):

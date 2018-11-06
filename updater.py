@@ -1,5 +1,7 @@
+from view import render
+
 def update():
-    view()
+    render()
 
     while True:
         for player in ('X', 'O'):

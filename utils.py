@@ -1,3 +1,6 @@
+from view import render
+
+
 def validate_out_of_range_value(value):
     if value > 2:
         return True
@@ -100,7 +103,7 @@ def do_next_turn(player):
         print('\n\nSecond player turn')
         do_player_turn(player)
 
-    view()
+    render()
 
 
 def do_player_turn(player):
