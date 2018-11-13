@@ -1,5 +1,6 @@
 from view import render
 
+
 def update():
     render()
 
