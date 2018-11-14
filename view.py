@@ -1,5 +1,8 @@
+import os
+
+
 def render():
-    print('\n')
+    os.system('cls' if os.name == 'nt' else 'clear')
 
     for row_index, row in enumerate(model):
         for index, column in enumerate(row):
