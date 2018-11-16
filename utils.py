@@ -113,4 +113,5 @@ def do_player_turn(model, player):
         print('cell already occupied')
         row, cell = get_player_input()
 
+    # TODO maybe return a new model from here
     set_model(row, cell, player)
