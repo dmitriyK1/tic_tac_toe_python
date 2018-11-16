@@ -1,13 +1,29 @@
 import os
 
 
+def get_cell_view_value(model, row, cell):
+    return model[row][cell] or ' '
+
+
+def map_model_to_cell_values(model):
+    cell_view_values = []
+
+    for row_index, row in enumerate(model):
+        for cell_index, cell in enumerate(row):
+            cell_view_values.append(get_cell_view_value(model, row_index, cell_index))
+
+    return cell_view_values
+
+
 def get_view(model):
+    cell_view_values = map_model_to_cell_values(model)
+
     return f'''
-    {model[0][0] or ' '}|{model[0][1] or ' '}|{model[0][2] or ' '}
+    {cell_view_values[0]}|{cell_view_values[1]}|{cell_view_values[2]}
     _____
-    {model[1][0] or ' '}|{model[1][1] or ' '}|{model[1][2] or ' '}
+    {cell_view_values[3]}|{cell_view_values[4]}|{cell_view_values[5]}
     _____
-    {model[2][0] or ' '}|{model[2][1] or ' '}|{model[2][2] or ' '}
+    {cell_view_values[6]}|{cell_view_values[7]}|{cell_view_values[8]}
     '''
 
 
