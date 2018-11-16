@@ -1,5 +1,4 @@
 from model import set_model
-from view import render
 
 
 def validate_out_of_range_value(value):
@@ -103,7 +102,6 @@ def do_next_turn(model, player):
         print('\n\nSecond player turn')
 
     do_player_turn(model, player)
-    render(model)
 
 
 def do_player_turn(model, player):
