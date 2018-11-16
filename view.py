@@ -26,14 +26,6 @@ def get_view(model):
     {cell_view_values[6]}|{cell_view_values[7]}|{cell_view_values[8]}
     '''
 
-
-def render(model):
-    os.system('cls' if os.name == 'nt' else 'clear')
-
-    view = get_view(model)
-
-    print(view)
-
     # for row_index, row in enumerate(model):
     #     for index, column in enumerate(row):
     #         val = column if column else ' '
@@ -44,3 +36,11 @@ def render(model):
     #             print('|', end='')
     #     if row_index != 2:
     #         print('\n-----')
+
+
+def render(model):
+    os.system('cls' if os.name == 'nt' else 'clear')
+
+    view = get_view(model)
+
+    print(view)
