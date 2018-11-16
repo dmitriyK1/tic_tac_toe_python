@@ -1,4 +1,4 @@
-model = [
+MODEL = [
     [None, None, None],
     [None, None, None],
     [None, None, None],
@@ -6,8 +6,8 @@ model = [
 
 
 def set_model(row, cell, value):
-    model[row][cell] = value
+    MODEL[row][cell] = value
 
 
 def get_model():
-    return model
+    return MODEL

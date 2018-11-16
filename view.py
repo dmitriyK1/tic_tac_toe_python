@@ -1,7 +1,11 @@
 import os
 
 
-def render():
+# TODO
+def get_view_template(model): pass
+
+
+def render(model):
     os.system('cls' if os.name == 'nt' else 'clear')
 
     for row_index, row in enumerate(model):

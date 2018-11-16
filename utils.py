@@ -1,3 +1,4 @@
+from model import set_model
 from view import render
 
 
@@ -52,7 +53,7 @@ def has_some_player_won(values):
         return True
 
 
-def find_filled_columns():
+def find_filled_columns(model):
     for index in range(len(model)):
         column_values = [row[index] for row in model]
 
@@ -60,7 +61,7 @@ def find_filled_columns():
             return True
 
 
-def find_filled_rows():
+def find_filled_rows(model):
     for row in model:
         # no need to check all row values if there is empty slot
         if None in row:
@@ -75,7 +76,7 @@ def is_axis_filled(axis_values, mark):
     return all(axis_value == mark for axis_value in axis_values)
 
 
-def find_filled_axis():
+def find_filled_axis(model):
     axis_values = [row[index] for (index, row) in enumerate(model)]
     reverse_axis_values = [row[len(model) - index - 1] for (index, row) in enumerate(model)]
 
@@ -83,37 +84,33 @@ def find_filled_axis():
         return True
 
 
-def is_game_over():
-    if find_filled_rows() or find_filled_columns() or find_filled_axis():
+def is_game_over(model):
+    if find_filled_rows(model) or find_filled_columns(model) or find_filled_axis(model):
         print('\nGAME OVER.')
         return True
 
     return False
 
 
-def is_cell_occupied(row, cell):
+def is_cell_occupied(model, row, cell):
     return model[row][cell]
 
 
-def do_next_turn(player):
+def do_next_turn(model, player):
     if player == 'X':
         print('\n\nFirst player turn')
-        do_player_turn(player)
     else:
         print('\n\nSecond player turn')
-        do_player_turn(player)
 
-    render()
+    do_player_turn(model, player)
+    render(model)
 
 
-def do_player_turn(player):
+def do_player_turn(model, player):
     row, cell = get_player_input()
 
-    while is_cell_occupied(row, cell):
+    while is_cell_occupied(model, row, cell):
         print('cell already occupied')
         row, cell = get_player_input()
 
-    model[row][cell] = player
-
-
-update()
+    set_model(row, cell, player)
